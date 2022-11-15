@@ -1,0 +1,8 @@
+H
+Hydrogen
+He
+Helium
+K
+Potassium
+C
+Carbon
