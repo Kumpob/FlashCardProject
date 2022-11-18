@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Remove implements ActionListener {
     JFrame jf = new JFrame("Remove Word");
-    JLabel text= new JLabel("<html>Enter the question to be remove:<br/>(Not the answer))</html>");
+    JLabel text= new JLabel("<html>Enter the question to be remove:<br/>(Not the answer)</html>");
     JTextField q= new JTextField();
     JButton rem= new JButton("Remove");
     JButton back=new JButton("Exit");
@@ -71,7 +71,7 @@ public class Remove implements ActionListener {
                 fw= new FileWriter("data.txt");
                 fw.write(word);
                 fw.close();
-                JOptionPane.showMessageDialog(null,"Flashcard added Successfully!");
+                JOptionPane.showMessageDialog(null,"Flashcard Removed Successfully!");
             }
             catch (Exception ex){
                 JOptionPane.showMessageDialog(null, ex+"");
