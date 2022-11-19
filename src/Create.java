@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
+import java.sql.*;
 
 public class Create implements ActionListener{
         JFrame jf = new JFrame("CreatePage");
@@ -13,10 +13,11 @@ public class Create implements ActionListener{
         JButton add=new JButton("Add flashcard");
         JButton back=new JButton("Exit");
         JLabel blank=new JLabel();
-        FileWriter fw;
+        String tableName;
 
-
-        Create(){
+        Create(String table){
+            this.tableName = table;
+            System.out.println(table);
             jf.setSize(400, 300);
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             GridLayout g1= new GridLayout();
@@ -35,16 +36,24 @@ public class Create implements ActionListener{
             jf.setVisible(true);
 
         }
-
         @Override
         public void actionPerformed(ActionEvent ae) {
             if(ae.getActionCommand()==add.getActionCommand()){
                 try {
-                    fw= new FileWriter("data.txt",true);
-                    fw.write(q.getText()+"\n");
-                    fw.write(a.getText()+"\n");
-                    fw.close();
-                    JOptionPane.showMessageDialog(null,"Flashcard added Successfully!");
+                    Connection c = null;
+              
+                    try {
+                       c = DriverManager.getConnection("jdbc:sqlite:./src/database/deck.db");
+                       PreparedStatement stmt = c.prepareStatement("INSERT INTO " + this.tableName + " (Question, Answer) VALUES (?,?)");
+                       stmt.setString(1, q.getText());
+                       stmt.setString(2, a.getText());
+                       stmt.executeUpdate();
+                       c.close();
+                    } catch ( Exception err ) {
+                       System.err.println( err.getClass().getName() + ": " + err.getMessage() );
+                       System.exit(0);
+                    }
+                    
                 }
                 catch (Exception e){
                     JOptionPane.showMessageDialog(null, e+"");
