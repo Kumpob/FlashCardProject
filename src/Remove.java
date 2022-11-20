@@ -65,7 +65,7 @@ public class Remove extends temp implements ActionListener {
                 fw= new FileWriter("data.txt");
                 fw.write(word);
                 fw.close();
-                JOptionPane.showMessageDialog(null,"Flashcard added Successfully!");
+                JOptionPane.showMessageDialog(null,"Flashcard Removed Successfully!");
             }
             catch (Exception ex){
                 JOptionPane.showMessageDialog(null, ex+"");
