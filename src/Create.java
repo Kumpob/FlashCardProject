@@ -4,19 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 
-public class Create implements ActionListener{
-        JFrame jf = new JFrame("CreatePage");
-        JTextField q= new JTextField();
-        JTextField a=new JTextField();
-        JLabel qlabel=new JLabel("Question: ");
-        JLabel alabel=new JLabel("Answer: ");
-        JButton add=new JButton("Add flashcard");
-        JButton back=new JButton("Exit");
-        JLabel blank=new JLabel();
-        FileWriter fw;
-
+public class Create extends temp implements ActionListener {
 
         Create(){
+            jf.setTitle("Create Card");
             jf.setSize(400, 300);
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             GridLayout g1= new GridLayout();
@@ -37,8 +28,8 @@ public class Create implements ActionListener{
         }
 
         @Override
-        public void actionPerformed(ActionEvent ae) {
-            if(ae.getActionCommand()==add.getActionCommand()){
+        public void actionPerformed(ActionEvent e) {
+            if(e.getActionCommand()==add.getActionCommand()){
                 try {
                     fw= new FileWriter("data.txt",true);
                     fw.write(q.getText()+"\n");
@@ -46,13 +37,12 @@ public class Create implements ActionListener{
                     fw.close();
                     JOptionPane.showMessageDialog(null,"Flashcard added Successfully!");
                 }
-                catch (Exception e){
-                    JOptionPane.showMessageDialog(null, e+"");
+                catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, ex+"");
                 }
             }
-            if(ae.getActionCommand()==back.getActionCommand()){
-                jf.setVisible(false);
-                new mainWin();
+            if(e.getActionCommand()==back.getActionCommand()){
+                goBack();
             }
         }
 }

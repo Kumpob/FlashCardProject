@@ -4,16 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class Remove implements ActionListener {
-    JFrame jf = new JFrame("Remove Word");
-    JLabel text= new JLabel("<html>Enter the question to be remove:<br/>(Not the answer)</html>");
-    JTextField q= new JTextField();
-    JButton rem= new JButton("Remove");
-    JButton back=new JButton("Exit");
-    FileWriter fw;
-    String word =null;
+public class Remove extends temp implements ActionListener {
 
     Remove(){
+        jf.setTitle("Remove Card");
         jf.setSize(400, 300);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout g1= new GridLayout();
@@ -71,15 +65,14 @@ public class Remove implements ActionListener {
                 fw= new FileWriter("data.txt");
                 fw.write(word);
                 fw.close();
-                JOptionPane.showMessageDialog(null,"Flashcard Removed Successfully!");
+                JOptionPane.showMessageDialog(null,"Flashcard added Successfully!");
             }
             catch (Exception ex){
                 JOptionPane.showMessageDialog(null, ex+"");
             }
         }
         if(e.getActionCommand()==back.getActionCommand()){
-            jf.setVisible(false);
-            new mainWin();
+            goBack();
         }
     }
 }

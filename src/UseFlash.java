@@ -4,27 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class UseFlash implements ActionListener {
-    JFrame jf = new JFrame("FlashCard");
-    JTextField q= new JTextField();
-    JTextField a=new JTextField();
-    JLabel qlabel=new JLabel("Question: ");
-    JLabel alabel=new JLabel("Answer: ");
-    JButton next=new JButton("Next");
-    JButton ans=new JButton("I can answer");
-    int canScore=0;
-    int totScore=0;
-    JTextField score=new JTextField("Score: "+canScore);
-    JButton exit=new JButton("exit");
-    JLabel blank=new JLabel();
-    FileWriter fw;
-    int no=1;
-
-
+public class UseFlash extends temp implements ActionListener {
     UseFlash(){
+        jf.setTitle("FlashCard");
         jf.setSize(400, 300);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        exit.addActionListener(this);
+        back.addActionListener(this);
         next.addActionListener(this);
         ans.addActionListener(this);
         GridLayout g1= new GridLayout();
@@ -37,7 +22,7 @@ public class UseFlash implements ActionListener {
         jf.add(a);
         jf.add(score);
         jf.add(ans);
-        jf.add(exit);
+        jf.add(back);
         jf.add(next);
 
         jf.setVisible(true);
@@ -91,9 +76,8 @@ public class UseFlash implements ActionListener {
             canScore=canScore+1;
             score.setText("Score: "+canScore);
         }
-        if(e.getActionCommand()==exit.getActionCommand()){
-            jf.setVisible(false);
-            new mainWin();
+        if(e.getActionCommand()== back.getActionCommand()){
+            goBack();
         }
     }
 }
