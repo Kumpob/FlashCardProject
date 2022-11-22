@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-
 public class selectionPanel {
-    JFrame jm = new JFrame("Simple Flashcard App");
+    JFrame jm = new JFrame("Selection Panel");
     JLabel qlabel=new JLabel("Question: ");
 
     selectionPanel(ArrayList <JButton> buttonsList ){   
@@ -11,6 +10,8 @@ public class selectionPanel {
         JPanel panel = new JPanel(new GridBagLayout());
         JLabel label = new JLabel("FLASHCARD!");
         JLabel blank1 = new JLabel();
+
+        jm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         label.setFont(new Font("Serif", Font.PLAIN, 32));
         panel.setLayout(new GridLayout(0, 2,20,25));
@@ -30,11 +31,14 @@ public class selectionPanel {
         jm.setResizable(false);
         jm.setLocationRelativeTo(null);  
         for(int i = 0;i < buttonsList.size();i++){
-            panel.add(buttonsList.get(i));
+            JButton but = buttonsList.get(i);
+            
+            panel.add(but);
         }
         jm.setVisible(true);
-
     }
+
+        
 
 
     }

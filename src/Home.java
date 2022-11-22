@@ -240,6 +240,7 @@ public class Home extends javax.swing.JFrame {
         but.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                
                 new NewWord(name).setVisible(true);
             }
         });
@@ -258,6 +259,7 @@ public class Home extends javax.swing.JFrame {
         but.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                
                 new List(name).setVisible(true);
             }
         });
@@ -277,6 +279,7 @@ public class Home extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 new Remov1(name).setVisible(true);
+                new Home();
             }
         });
         but.setFont(new Font("Bradley Hand ITC", Font.BOLD, 36));

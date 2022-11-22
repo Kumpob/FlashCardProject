@@ -10,6 +10,7 @@ public class Remov1 extends javax.swing.JFrame {
     public Remov1(String Name) {
         initComponents(Name);
     }
+    
     private void initComponents(String Name) {
         this.tableName = Name;
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -18,6 +19,8 @@ public class Remov1 extends javax.swing.JFrame {
         text = new javax.swing.JLabel();
         rem = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        remD = new javax.swing.JButton();
+        
         setTitle("Remove");
 
         list.setModel(tableModel);
@@ -61,6 +64,13 @@ public class Remov1 extends javax.swing.JFrame {
             }
         });
 
+        remD.setText("Delete Deck");
+        remD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,6 +78,8 @@ public class Remov1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(remD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(back)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -94,7 +106,8 @@ public class Remov1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rem)
-                    .addComponent(back))
+                    .addComponent(back)
+                    .addComponent(remD))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         tableModel.fireTableDataChanged();
@@ -124,6 +137,26 @@ public class Remov1 extends javax.swing.JFrame {
         Refresh();
     }
 
+    private void remDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remDActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        try {
+            Connection ce;
+            ce= DriverManager.getConnection("jdbc:sqlite:./src/database/deck.db");
+            PreparedStatement stmt = ce.prepareStatement("DROP TABLE " + this.tableName);
+            stmt.executeUpdate();
+            stmt.close();
+            ce.close();
+            JOptionPane.showMessageDialog(null,"deck removed Successfully!\nplease close selection page to update database");
+
+        } catch (Exception err) {
+            System.err.println(err.getClass().getName() + ": " + err.getMessage());
+            System.exit(0);
+        }
+        
+
+    }
+
     void Refresh(){
         tableModel.setRowCount(0);
         try {
@@ -150,6 +183,7 @@ public class Remov1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable list;
     private javax.swing.JButton rem;
+    private javax.swing.JButton remD;
     private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 }
