@@ -39,7 +39,7 @@ public class UseF extends JFrame {
         back = new JButton();
         getFlashquestion();
 
-
+        
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("FlashCard");
 
@@ -142,6 +142,10 @@ public class UseF extends JFrame {
             dispose();
         }
         setVisible(true);
+        if (qa.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Flashcard Empty!");
+            dispose();
+        }
     }
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -157,6 +161,7 @@ public class UseF extends JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         if(!keys.isEmpty()){
+            if(!keys.isEmpty()){
             if (loop % 2 == 1){
             System.out.println(keys);
             q.setText(keys.get(0));
@@ -166,8 +171,8 @@ public class UseF extends JFrame {
             keys.remove(0);
         }
         loop = loop + 1;
-        }
-        else{
+        
+        if(keys.isEmpty()){
             JOptionPane.showMessageDialog(null, "Total Score: "+canScore+"/"+totScore);
         }
     }

@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 public class selectionPanel {
-    JFrame jm = new JFrame("Selection Panel");
+    JFrame jm = new JFrame("Selection Page");
     JLabel qlabel=new JLabel("Question: ");
 
     selectionPanel(ArrayList <JButton> buttonsList ){   
