@@ -153,7 +153,8 @@ public class UseF extends JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         
-        if (loop % 2 == 1){
+        if(!keys.isEmpty()){
+            if (loop % 2 == 1){
             System.out.println(keys);
             q.setText(keys.get(0));
             a.setText("");
@@ -162,8 +163,8 @@ public class UseF extends JFrame {
             keys.remove(0);
         }
         loop = loop + 1;
-        
-        if(keys.isEmpty()){
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Total Score: "+canScore+"/"+totScore);
         }
     }
