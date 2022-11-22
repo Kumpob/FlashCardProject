@@ -18,7 +18,7 @@ public class Home extends javax.swing.JFrame {
         imageIcon = new ImageIcon("./src/others/flashPic.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); 
         Image newimg = image.getScaledInstance(220, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        getTable();
+        
         
         imageIcon = new ImageIcon(newimg); 
         jLabel1 = new javax.swing.JLabel();
@@ -147,6 +147,7 @@ public class Home extends javax.swing.JFrame {
 
 
     private void addWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWordActionPerformed
+        getTable();
         ArrayList<JButton> buttonWithAddFunc = new ArrayList<>(); 
         for(int i = 0;i < flashcardList.size();i++){
             buttonWithAddFunc.add(createButtonwithFuncAdd(flashcardList.get(i)));
@@ -156,6 +157,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        getTable();
         ArrayList<JButton> buttonWithUseFunc = new ArrayList<>(); 
         for(int i = 0;i < flashcardList.size();i++){
             buttonWithUseFunc.add(createButtonwithFuncUse(flashcardList.get(i)));
@@ -164,6 +166,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void removActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removActionPerformed
+        getTable();
         ArrayList<JButton> buttonWithRemoveFunc = new ArrayList<>(); 
         for(int i = 0;i < flashcardList.size();i++){
             buttonWithRemoveFunc.add(createButtonwithFuncDelete(flashcardList.get(i)));
@@ -173,6 +176,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void viewListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewListActionPerformed
+        getTable();
         ArrayList<JButton> buttonWithListFunc = new ArrayList<>(); 
         for(int i = 0;i < flashcardList.size();i++){
             buttonWithListFunc.add(createButtonwithFuncList(flashcardList.get(i)));
@@ -287,6 +291,7 @@ public class Home extends javax.swing.JFrame {
 
 
     void getTable(){
+        flashcardList.clear();
         try {
             Connection ce;
             ce= DriverManager.getConnection("jdbc:sqlite:./src/database/deck.db");
