@@ -161,7 +161,6 @@ public class UseF extends JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         if(!keys.isEmpty()){
-            if(!keys.isEmpty()){
             if (loop % 2 == 1){
             System.out.println(keys);
             q.setText(keys.get(0));
@@ -174,11 +173,12 @@ public class UseF extends JFrame {
         
         if(keys.isEmpty()){
             JOptionPane.showMessageDialog(null, "Total Score: "+canScore+"/"+totScore);
-        }
+            }
+        }   
     }
-
     private void scoreActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        canScore=canScore+1;
+        score.setText("Score: "+canScore);
     }
 
     void getFlashquestion(){
