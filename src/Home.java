@@ -31,6 +31,7 @@ public class Home extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         addDeck = new javax.swing.JButton();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setTitle("Main Page");
 
