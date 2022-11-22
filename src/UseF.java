@@ -39,7 +39,7 @@ public class UseF extends JFrame {
         back = new JButton();
         getFlashquestion();
 
-
+        
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("FlashCard");
 
@@ -138,6 +138,10 @@ public class UseF extends JFrame {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+        if (qa.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Flashcard Empty!");
+            dispose();
+        }
     }
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.*;
 
 public class selectionPanel {
-    JFrame jm = new JFrame("Simple Flashcard App");
+    JFrame jm = new JFrame("Selection Page");
     JLabel qlabel=new JLabel("Question: ");
 
     selectionPanel(ArrayList <JButton> buttonsList ){   
@@ -33,6 +33,7 @@ public class selectionPanel {
             panel.add(buttonsList.get(i));
         }
         jm.setVisible(true);
+
 
     }
 
