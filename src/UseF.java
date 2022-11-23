@@ -137,10 +137,6 @@ public class UseF extends JFrame {
 
         pack();
         setLocationRelativeTo(null);
-        if (qa.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Flashcard Empty!");
-            dispose();
-        }
         setVisible(true);
         if (qa.isEmpty()){
             JOptionPane.showMessageDialog(null,"Flashcard Empty!");
@@ -165,16 +161,17 @@ public class UseF extends JFrame {
             System.out.println(keys);
             q.setText(keys.get(0));
             a.setText("");
-        }else{
+            }
+        else{
             a.setText(qa.get(keys.get(0)));   
             keys.remove(0);
+            }
+            loop = loop + 1;
         }
-        loop = loop + 1;
-        
-        if(keys.isEmpty()){
+        else{
             JOptionPane.showMessageDialog(null, "Total Score: "+canScore+"/"+totScore);
             }
-        }   
+           
     }
     private void scoreActionPerformed(java.awt.event.ActionEvent evt) {
         canScore=canScore+1;
