@@ -11,7 +11,7 @@ public class selectionPanel {
         JLabel label = new JLabel("FLASHCARD!");
         JLabel blank1 = new JLabel();
 
-        jm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         label.setFont(new Font("Serif", Font.PLAIN, 32));
         panel.setLayout(new GridLayout(0, 2,20,25));
